@@ -28,7 +28,7 @@ void loop() {
         if (isLeapYear(year) == 0) {
             Serial.print("not ");
         }
-        Serial.println("a leap year.")
+        Serial.println("a leap year.");
     }
 }
 
@@ -60,7 +60,8 @@ int isLeapYear(int year) {
   Return value:
     int         the number of characters read for the string
   
-  CAUTION: This method will sit here forever if no input is nread from the serial port and no newline character is entered.
+  CAUTION: This method will sit here forever if no input is read
+    from the serial port and no newline character is entered.
  *****/
  int readLine(char str[]) {
     char c;
