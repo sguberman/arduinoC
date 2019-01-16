@@ -22,9 +22,9 @@ void loop()
   Returns:
     void
 *****/
-void blinkLED(pin, *whichState)
+void blinkLED(int pin, int *whichState)
 {
     digitalWrite(pin, *whichState);
     delay(1000);
-    *whichState = !(*whichState)
+    *whichState = !(*whichState);
 }
