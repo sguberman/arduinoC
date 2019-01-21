@@ -1,4 +1,4 @@
-#define DEBUG
+//#define DEBUG
 
 #define LED1 11
 #define LED2 10
@@ -20,9 +20,9 @@ void loop()
     goodInput = getInput(&ledCombo);
     
     #ifdef DEBUG
-    Serial.print("goodInput = ");
+    Serial.print("in loop():\t\tgoodInput = ");
     Serial.print(goodInput);
-    Serial.print(" ledCombo = ");
+    Serial.print(", ledCombo = ");
     Serial.println(ledCombo);
     #endif
     
@@ -40,17 +40,30 @@ int getInput(int *ledCombo)
         if (Serial.available())
         {
             c = Serial.read();
+            #ifdef DEBUG
+            Serial.print("in getInput():\t\tc = ");
+            Serial.print(c);
+            #endif
+            
             if (isdigit(c))
             {
-                int temp = atoi(c);
+                int temp = atoi(&c);
+                #ifdef DEBUG
+                Serial.print(", temp = ");
+                Serial.println(temp);
+                #endif
+                
                 if (temp >= 0 && temp < 4)
                 {
                     *ledCombo = temp;
                     return 1;
                 }
             } else {
-                return 0;
+                #ifdef DEBUG
+                Serial.println();
+                #endif
             }
+            return 0;
         }
     }
 }
