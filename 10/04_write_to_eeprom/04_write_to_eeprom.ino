@@ -76,3 +76,16 @@ int readInitFlag()
     }
     return myUnion.testID;
 }
+
+void writeOneRecord(int index)
+{
+    byte *b;
+    int i;
+    int offset = index * sizeof(servicePeople);
+
+    b = (byte *) &myPeople[index];  // going to write this record
+    for (i = 0; i < sizeof(servicePeople); i++)
+    {
+        EEPROM.write(i + offset, *b++);
+    }
+}
